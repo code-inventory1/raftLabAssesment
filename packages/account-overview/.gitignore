@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Production
+dist/
+build/
+
+# Development
+.cache/
+.webpack_cache/
+
+# Environment files
+.env
+.env.local
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Webpack
+.webpack/
+
+# TypeScript
+*.tsbuildinfo
+
+# ESLint
+.eslintcache
+
+# Parcel
+.parcel-cache/
+
+# Storybook
+storybook-static/

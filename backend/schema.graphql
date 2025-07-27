@@ -1,0 +1,39 @@
+type Customer {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type Account {
+  id: ID!
+  customerId: ID!
+  accountNumber: String!
+  balance: Float!
+  currency: String!
+  customer: Customer
+}
+
+type Transaction {
+  id: ID!
+  accountId: ID!
+  type: TransactionType!
+  amount: Float!
+  description: String!
+  date: String!
+  account: Account
+}
+
+enum TransactionType {
+  DEBIT
+  CREDIT
+}
+
+type Query {
+  customers: [Customer]
+  customer(id: ID!): Customer
+  accounts: [Account]
+  account(id: ID!): Account
+  transactions: [Transaction]
+  transaction(id: ID!): Transaction
+  transactionsByAccount(accountId: ID!): [Transaction]
+}

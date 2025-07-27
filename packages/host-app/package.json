@@ -1,0 +1,32 @@
+{
+  "name": "@bank-portal/host-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "start:native": "react-native start"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.8.0",
+    "@bank-portal/ui-kit": "file:../ui-kit",
+    "dotenv": "^17.2.1",
+    "graphql": "^16.8.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.72.0",
+    "react-native-web": "0.19.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/react-native": "^0.72.0",
+    "css-loader": "^6.11.0",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.4",
+    "ts-loader": "^9.4.0",
+    "typescript": "^5.0.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.0"
+  }
+}
