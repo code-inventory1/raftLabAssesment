@@ -6,9 +6,32 @@ import { eventBus } from './utils/eventBus';
 const AccountOverview = React.lazy(() => import('accountOverview/App'));
 const TransactionDetails = React.lazy(() => import('transactionDetails/App'));
 
+// ✅ Better environment variable handling with fallbacks
+const getGraphQLUrl = () => {
+  // Check if we have the full URL from environment
+  if (process.env.BACKEND_GRAPHQL_URL) {
+    return `${process.env.BACKEND_GRAPHQL_URL}/graphql`;
+  }
+
+  // Fallback: build URL from parts
+  const protocol = process.env.PROTOCOL || 'http';
+  const hostIP = process.env.HOST_IP || 'localhost';
+  const port = process.env.BACKEND_PORT || '4000';
+
+  return `${protocol}://${hostIP}:${port}/graphql`;
+};
+
+const GRAPHQL_URL = getGraphQLUrl();
+
+
 const client = new ApolloClient({
-  uri: 'http://192.168.31.185:4000/graphql',
+  uri: GRAPHQL_URL,
   cache: new InMemoryCache(),
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-and-network',
+    },
+  },
 });
 
 export const App: React.FC = () => {
@@ -32,7 +55,6 @@ export const App: React.FC = () => {
   const handleNavigate = (section: string) => {
     console.log('Host App: Navigating to section:', section);
     setCurrentSection(section);
-    // Clear selected transaction when navigating away from transactions
     if (section !== 'transactions') {
       setSelectedTransaction(null);
     }

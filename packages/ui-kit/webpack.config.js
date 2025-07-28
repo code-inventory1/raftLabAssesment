@@ -9,6 +9,7 @@ module.exports = {
     library: '@bank-portal/ui-kit',
     libraryTarget: 'umd',
     globalObject: 'this',
+    clean: true,
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -23,7 +24,7 @@ module.exports = {
         use: {
           loader: 'ts-loader',
           options: {
-            transpileOnly: true,
+            transpileOnly: false,
           },
         },
         exclude: /node_modules/,

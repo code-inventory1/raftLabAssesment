@@ -21,7 +21,7 @@ interface TransactionDetailsProps {
   formatDateTime: (dateString: string) => { date: string; time: string };
 }
 
-export const TransactionDetails: React.FC<TransactionDetailsProps> = ({
+export const TransactionDetailsData: React.FC<TransactionDetailsProps> = ({
   transaction,
   isMobile,
   onBack,

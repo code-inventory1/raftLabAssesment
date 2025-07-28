@@ -6,7 +6,7 @@ import { useMobileDetection } from '../hooks/useMobileDetection';
 import { usePlatformActions } from '../hooks/usePlatformActions';
 import { TransactionListHeader } from './transaction-components/TransactionListHeader';
 import { TransactionListItem } from './transaction-components/TransactionListItem';
-import { TransactionDetails } from './transaction-components/TransactionDetails';
+import { TransactionDetailsData } from './transaction-components/TransactionDetails';
 
 interface Transaction {
   id: string;
@@ -96,7 +96,7 @@ export const TransactionList: React.FC<TransactionListProps> = ({
   // Transaction Detail View
   if (selectedTransaction) {
     return (
-      <TransactionDetails
+      <TransactionDetailsData
         transaction={selectedTransaction}
         isMobile={isMobile}
         onBack={() => setSelectedTransaction(null)}

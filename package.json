@@ -10,51 +10,41 @@
   "scripts": {
     "preinstall": "echo '🚀 Setting up Enterprise Banking Portal...'",
     "postinstall": "echo '✅ Setup complete! Run npm run dev:all to start'",
-
     "install:all": "npm install && npm run install:backend && npm run install:frontend",
     "install:backend": "cd backend && npm install",
     "install:frontend": "cd packages/ui-kit && npm install && cd ../host-app && npm install && cd ../account-overview && npm install && cd ../transaction-details && npm install",
-
     "build:ui-kit": "cd packages/ui-kit && npm run build",
     "build:backend": "cd backend && npm run build",
     "build:host": "cd packages/host-app && npm run build",
     "build:account-overview": "cd packages/account-overview && npm run build",
     "build:transaction-details": "cd packages/transaction-details && npm run build",
     "build:all": "npm run build:ui-kit && npm run build:host && npm run build:account-overview && npm run build:transaction-details",
-
     "dev:backend": "cd backend && npm run dev",
     "dev:account-overview": "cd packages/account-overview && npm start",
     "dev:transaction-details": "cd packages/transaction-details && npm start",
     "dev:host": "cd packages/host-app && npm start",
     "dev:all": "concurrently -n \"backend,account,transaction,host\" -c \"blue,green,yellow,magenta\" \"npm run dev:backend\" \"npm run dev:account-overview\" \"npm run dev:transaction-details\" \"npm run dev:host\"",
-
     "dev:mobile": "concurrently -n \"backend,account,transaction,host\" -c \"blue,green,yellow,magenta\" \"npm run dev:backend\" \"cd packages/account-overview && npm start\" \"cd packages/transaction-details && npm start\" \"cd packages/host-app && HOST_IP=192.168.1.100 npm start\"",
-
     "test:backend": "cd backend && npm test",
     "test:host": "cd packages/host-app && npm test",
     "test:account-overview": "cd packages/account-overview && npm test",
     "test:transaction-details": "cd packages/transaction-details && npm test",
     "test:all": "npm run test:backend && npm run test:host && npm run test:account-overview && npm run test:transaction-details",
-
     "lint:all": "cd backend && npm run lint && cd ../packages/host-app && npm run lint && cd ../account-overview && npm run lint && cd ../transaction-details && npm run lint",
     "format:all": "cd backend && npm run format && cd ../packages/host-app && npm run format && cd ../account-overview && npm run format && cd ../transaction-details && npm run format",
-
     "clean:node_modules": "rm -rf node_modules packages/*/node_modules backend/node_modules",
     "clean:builds": "rm -rf packages/*/dist packages/*/build backend/dist backend/build",
     "clean:cache": "rm -rf packages/*/.cache packages/*/.webpack_cache backend/.cache",
     "clean": "npm run clean:builds && npm run clean:cache",
     "clean:all": "npm run clean:node_modules && npm run clean:builds && npm run clean:cache",
-
     "fresh-start": "npm run clean:all && npm run install:all && npm run build:ui-kit",
     "reset": "npm run fresh-start",
-
     "health-check": "concurrently -s first \"curl -f http://localhost:4000/health || exit 1\" \"curl -f http://localhost:3001 || exit 1\" \"curl -f http://localhost:3002 || exit 1\" \"curl -f http://localhost:3000 || exit 1\"",
-
     "demo:setup": "npm run fresh-start && npm run dev:all",
     "demo:mobile": "npm run fresh-start && npm run dev:mobile"
   },
   "devDependencies": {
-    "concurrently": "^8.2.0"
+    "concurrently": "^8.2.2"
   },
   "engines": {
     "node": ">=16.0.0",

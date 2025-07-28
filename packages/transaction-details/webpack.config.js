@@ -14,8 +14,8 @@ module.exports = {
       directory: './public',
     },
     allowedHosts: 'all',
-     hot: true, // ✅ Make sure this is enabled
-    liveReload: true, // ✅ Add this
+     hot: true,
+    liveReload: true, 
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
